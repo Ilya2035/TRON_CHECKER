@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from app.models import Base
 
-engine = create_async_engine("sqlite+aiosqlite///tronchecker.db")
+engine = create_async_engine("sqlite+aiosqlite:///tronchecker.db")
 
 new_session = async_sessionmaker(engine, expire_on_commit=False)
 
