@@ -9,3 +9,4 @@ app = FastAPI(title="Tron requests app")
 async def on_startup():
     await init_db()
 
+app.include_router(tron_router)
