@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi_pagination import add_pagination
 
 from app.database import init_db
-from app.routers.requestsfortron import router as tron_router
+from app.routers.requests_for_tron import router as tron_router
 
 app = FastAPI(title="Tron requests app")
 

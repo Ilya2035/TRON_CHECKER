@@ -13,6 +13,21 @@ class TronAddressResponse(BaseModel):
     balance_trx: float
 
 
+class TronAddressInfo(TronAddressRequest, TronAddressResponse):
+    pass
+
+
+class TronAccountBalanceRaw(BaseModel):
+    balance: int = 0
+
+
+class TronResourceInfoRaw(BaseModel):
+    freeNetLimit: int = 0
+    freeNetUsed: int = 0
+    EnergyLimit: int = 0
+    EnergyUsed: int = 0
+
+
 class RequestsList(BaseModel):
     id: int
     tron_address: str

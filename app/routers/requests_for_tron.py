@@ -5,21 +5,21 @@ from sqlalchemy import select, desc
 from fastapi_pagination import Page
 from fastapi_pagination.ext.async_sqlalchemy import paginate
 
-from app.service.gettronaccountinfo import get_tron_account_info
+from app.service.get_tron_account_info import get_tron_account_info
 from app.schemas import TronAddressRequest, TronAddressResponse, RequestsList
 from app.database import get_session
 from app.models import RequestsToTron
 
-router = APIRouter(prefix="/requestsfortron", tags=["requestsfortron"])
+router = APIRouter(prefix="/requests_for_tron", tags=["requests_for_tron"])
 
 
 @router.post("/", response_model=TronAddressResponse)
 async def create_request(
-        addresdata: TronAddressRequest,
+        address_data: TronAddressRequest,
         db: AsyncSession = Depends(get_session)
 ):
-    data = await get_tron_account_info(addresdata.address)
-    upload = RequestsToTron(tron_address=data["address"])
+    data = await get_tron_account_info(address_data.address)
+    upload = RequestsToTron(tron_address=data.address)
     db.add(upload)
     await db.commit()
     await db.refresh(upload)
