@@ -3,6 +3,7 @@ from app.schemas import (
     TronAddressInfo,
     TronResourceInfoRaw
 )
+from app.config import SUN_IN_TRX
 
 
 async def get_tron_account_info(address: str) -> TronAddressInfo:
@@ -12,7 +13,7 @@ async def get_tron_account_info(address: str) -> TronAddressInfo:
 
         validated_resources = TronResourceInfoRaw(**raw_resources)
 
-        balance = float(raw_balance) / 1_000_000
+        balance = float(raw_balance) / SUN_IN_TRX
         bandwidth = validated_resources.freeNetLimit - validated_resources.freeNetUsed
         energy = validated_resources.EnergyLimit - validated_resources.EnergyUsed
 
