@@ -9,6 +9,7 @@ from app.service.get_tron_account_info import get_tron_account_info
 from app.schemas import TronAddressRequest, TronAddressResponse, RequestsList
 from app.database import get_session
 from app.models import RequestsToTron
+from app.crud.tron_requests import create_tron_request_record
 
 router = APIRouter(prefix="/requests_for_tron", tags=["requests_for_tron"])
 
@@ -19,10 +20,7 @@ async def create_request(
         db: AsyncSession = Depends(get_session)
 ):
     data = await get_tron_account_info(address_data.address)
-    upload = RequestsToTron(tron_address=data.address)
-    db.add(upload)
-    await db.commit()
-    await db.refresh(upload)
+    await create_tron_request_record(data.address, db)
     return data
 
 

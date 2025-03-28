@@ -1,7 +1,6 @@
 from app.clients.tron_client import get_tron_client
 from app.schemas import (
     TronAddressInfo,
-    TronAccountBalanceRaw,
     TronResourceInfoRaw
 )
 

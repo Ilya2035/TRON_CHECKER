@@ -17,10 +17,6 @@ class TronAddressInfo(TronAddressRequest, TronAddressResponse):
     pass
 
 
-class TronAccountBalanceRaw(BaseModel):
-    balance: int = 0
-
-
 class TronResourceInfoRaw(BaseModel):
     freeNetLimit: int = 0
     freeNetUsed: int = 0
