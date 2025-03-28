@@ -1,0 +1,1 @@
+PAGES_SIZE = 10
