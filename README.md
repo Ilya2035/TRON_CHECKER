@@ -20,8 +20,8 @@
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/your_username/tron-checker.git
-cd tron-checker
+git clone https://github.com/Ilya2035/TRON_CHECKER.git
+cd TRON_CHECKER
 
 # Создать и активировать виртуальное окружение
 python -m venv venv
