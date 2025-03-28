@@ -30,11 +30,12 @@ async def test_create_tron_request(mock_get_info):
         base_url="http://test"
     ) as ac:
         response = await ac.post("/requests_for_tron/", json={"address": "any_address"})
+    response_data = response.json()
 
     assert response.status_code == 200
-    assert response.json()["bandwidth"] == 1000
-    assert response.json()["energy"] == 500
-    assert response.json()["balance_trx"] == 123.45
+    assert response_data["bandwidth"] == 1000
+    assert response_data["energy"] == 500
+    assert response_data["balance_trx"] == 123.45
 
 
 @pytest.mark.asyncio
