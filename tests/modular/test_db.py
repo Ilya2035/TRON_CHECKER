@@ -1,8 +1,15 @@
+"""Tests for database interactions related to Tron address requests."""
+
 import pytest
 
 
 @pytest.mark.asyncio
 async def test_create_tron_request_record():
+    """
+    Test creating a new record in the database using create_tron_request_record.
+
+    Ensures the record is saved and contains the correct address.
+    """
     from app.database import new_session, init_db
 
     await init_db()

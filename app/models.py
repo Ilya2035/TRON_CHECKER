@@ -1,3 +1,5 @@
+"""SQLAlchemy models for database schema."""
+
 from datetime import datetime
 
 from sqlalchemy import String, DateTime, func
@@ -5,10 +7,12 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
+    """Base class for SQLAlchemy models."""
     pass
 
 
 class RequestsToTron(Base):
+    """Model for storing Tron address requests."""
     __tablename__ = "requests_to_tron"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)

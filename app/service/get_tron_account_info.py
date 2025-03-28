@@ -1,13 +1,25 @@
+"""Service for retrieving Tron account data."""
+
 from fastapi import HTTPException
+
 from app.clients.tron_client import get_tron_client
-from app.schemas import (
-    TronAddressInfo,
-    TronResourceInfoRaw
-)
+from app.schemas import TronAddressInfo, TronResourceInfoRaw
 from app.config import SUN_IN_TRX
 
 
 async def get_tron_account_info(address: str) -> TronAddressInfo:
+    """
+    Fetch Tron account balance, bandwidth, and energy.
+
+    Args:
+        address (str): Tron wallet address.
+
+    Returns:
+        TronAddressInfo: Structured account data.
+
+    Raises:
+        HTTPException: If the address is invalid or data parsing fails.
+    """
     async with get_tron_client() as client:
         try:
             raw_balance = await client.get_account_balance(address)
