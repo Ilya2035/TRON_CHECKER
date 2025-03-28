@@ -15,5 +15,8 @@ async def create_request(
         db: AsyncSession = Depends(get_session)
 ):
     data = await get_tron_account_info(addresdata.address)
-    upload = RequestsToTron(tron_address=data.address)
-
+    upload = RequestsToTron(tron_address=data["address"])
+    db.add(upload)
+    await db.commit()
+    await db.refresh(upload)
+    return data
