@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 
@@ -11,7 +13,10 @@ class TronAddressResponse(BaseModel):
     balance_trx: float
 
 
-class Listofrequests(BaseModel):
+class RequestsList(BaseModel):
     id: int
     tron_address: str
-    request_time: str
+    request_time: datetime
+
+    class Config:
+        orm_mode = True
