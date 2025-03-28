@@ -24,4 +24,3 @@ async def get_tron_account_info(address: str) -> dict:
             "energy": energy,
             "balance_trx": balance
         }
-
